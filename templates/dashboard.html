@@ -1,5 +1,13 @@
 <!DOCTYPE html>
 {% extends "base.html" %} {% block content %}
 <!-- Your solution here. -->
-<h1>HEY</h1>
+<div>
+  {% if loggedIn %}
+  <a href="/logout">Log out</a>
+  <h1>Hey {{ name }}. Welcome to the dashboard</h1>
+  {% else %}
+  <p class="errorMsg">You are not logged in. Log in to acces the dashboard.</p>
+  {% endif %}
+</div>
+
 {% endblock content %}

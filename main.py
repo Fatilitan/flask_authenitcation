@@ -42,6 +42,17 @@ def login():
         return render_template("login.html", title="Login", error=False)
 
 
-@app.route("/dashboard")
+@app.route("/dashboard", methods=["GET"])
 def dashboard():
-    return render_template("dashboard.html")
+    if "user" in session and session["user"]:
+        return render_template(
+            "dashboard.html", title="Dashboard", loggedIn=True, name=session["user"]
+        )
+    else:
+        return render_template("dashboard.html", title="Dashboard", loggedIn=False)
+
+
+@app.route("/logout")
+def logout():
+    session.pop("user", None)
+    return redirect(url_for("index"))

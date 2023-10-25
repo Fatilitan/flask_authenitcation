@@ -9,4 +9,10 @@
   <input id="password" type="text" name="password" />
   <input type="submit" value="Login" />
 </form>
+
+<div>
+  {% if error %}
+  <p class="errorMsg">The username or password is not correct. Try again!</p>
+  {% endif %}
+</div>
 {% endblock content %}
